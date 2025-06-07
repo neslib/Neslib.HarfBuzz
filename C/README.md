@@ -4,6 +4,10 @@ This is internal documentation. It gives a short bullet point descriptions for b
 
 We use CMake although this will be deprecated in the future in favor of Meson.
 
+## All Platforms
+
+Before building, open "hb-config.hh" and comment out the line `#define HB_NO_FACE_COLLECT_UNICODES`.
+
 ## Windows
 
 * Use CMake GUI. After Configure:
