@@ -58,7 +58,7 @@ Prefix=
 
 [ParseOptions]
 IgnoreParseErrors=1
-CmdLineArgs=-DHB_NO_SINGLE_HEADER_ERROR,-DHB_EXTERN=
+CmdLineArgs=-DHB_MINI,-DHB_NO_SINGLE_HEADER_ERROR
 
 [ConvertOptions]
 CallConv=Cdecl

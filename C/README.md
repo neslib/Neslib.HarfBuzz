@@ -13,7 +13,7 @@ Before building, open "hb-config.hh" and comment out the line `#define HB_NO_FAC
 * Use CMake GUI. After Configure:
   * Uncheck all `HB_*` entries.
   * Add a Boolean `BUILD_SHARED_LIBS` entry and check it.
-  * Update `CMAKE_CXX_FLAGS_RELEASE` and `CMAKE_C_FLAGS_RELEASE` by replacing `/MD` with `/MT` and adding `/DHB_TINY`.
+  * Update `CMAKE_CXX_FLAGS_RELEASE` and `CMAKE_C_FLAGS_RELEASE` by replacing `/MD` with `/MT` and adding `/DHB_MINI`.
 * Configure again.
 * Generate the solution.
 * Open and build the solution in Visual Studio.
@@ -29,7 +29,7 @@ Before building, open "hb-config.hh" and comment out the line `#define HB_NO_FAC
 * Open project.
 * Choose the "harfbuzz" project in the sidebar and sub-sidebar.
 * Under "Build Settings", set "Architectures" to "Standard Architectures", and set "Build Active Architecture Only" to "No" (for all configurations).
-* Also under "Build Settings", under "Apple Clang - Preprocessing", add the `HB_TINY` define to the Release configuration.
+* Also under "Build Settings", under "Apple Clang - Preprocessing", add the `HB_MINI` define to the Release configuration.
 * In Xcode, choose "Product | Scheme | Edit Scheme.." and select the "harfbuzz" project.
 * Select the "Run" scheme and set Build Configuration to Release. Do the same for the "ALL_BUILD" project.
 * Choose "Product | Build For | Running"
@@ -48,7 +48,7 @@ Before building, open "hb-config.hh" and comment out the line `#define HB_NO_FAC
 * Press Generate.
 * Open project.
 * Choose the "harfbuzz" project in the sidebar and sub-sidebar.
-* Under "Build Settings", under "Apple Clang - Preprocessing", add the `HB_TINY` define to the Release configuration.
+* Under "Build Settings", under "Apple Clang - Preprocessing", add the `HB_MINI` define to the Release configuration.
 * In Xcode, choose "Product | Scheme | Edit Scheme.." and select the "harfbuzz" project.
 * Select the "Run" scheme and set Build Configuration to Release. Do the same for the "ALL_BUILD" project.
 * Choose "Product | Build For | Running"
@@ -65,7 +65,7 @@ Before building, open "hb-config.hh" and comment out the line `#define HB_NO_FAC
 
   * Uncheck all `HB_*` entries.
   * Set `CMAKE_BUILD_TYPE` to `Release`
-  * Set `CMAKE_CXX_FLAGS_RELEASE` and `CMAKE_C_FLAGS_RELEASE` to `-DHB_TINY` (do *not* add any `-O2` or `-DNDEBUG` flags!)
+  * Set `CMAKE_CXX_FLAGS_RELEASE` and `CMAKE_C_FLAGS_RELEASE` to `-DHB_MINI` (do *not* add any `-O2` or `-DNDEBUG` flags!)
 
 * And add the following options:
   * `ANDROID_ABI`: armeabi-v7a
