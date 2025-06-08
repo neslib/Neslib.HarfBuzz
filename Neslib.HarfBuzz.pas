@@ -1156,6 +1156,7 @@ var
 //  hb_buffer_deserialize_unicode: function(buffer: Phb_buffer_t; const buf: PUTF8Char; buf_len: Integer; end_ptr: PPUTF8Char; format: hb_buffer_serialize_format_t): hb_bool_t; cdecl = nil;
   hb_buffer_diff: function(buffer: Phb_buffer_t; reference: Phb_buffer_t; dottedcircle_glyph: hb_codepoint_t; position_fuzz: Cardinal): hb_buffer_diff_flags_t; cdecl = nil;
 //  hb_buffer_set_message_func: procedure(buffer: Phb_buffer_t; func: hb_buffer_message_func_t; user_data: Pointer; destroy: hb_destroy_func_t); cdecl = nil;
+  hb_ot_font_set_funcs: procedure (font: Phb_font_t); cdecl = nil;
 {$ELSE}
 const
   {$IF Defined(IOS)}
@@ -1569,6 +1570,7 @@ procedure hb_buffer_normalize_glyphs(buffer: Phb_buffer_t); cdecl; external LIB_
 //function hb_buffer_deserialize_unicode(buffer: Phb_buffer_t; const buf: PUTF8Char; buf_len: Integer; end_ptr: PPUTF8Char; format: hb_buffer_serialize_format_t): hb_bool_t; cdecl; external LIB_HARFBUZZ;
 function hb_buffer_diff(buffer: Phb_buffer_t; reference: Phb_buffer_t; dottedcircle_glyph: hb_codepoint_t; position_fuzz: Cardinal): hb_buffer_diff_flags_t; cdecl; external LIB_HARFBUZZ;
 //procedure hb_buffer_set_message_func(buffer: Phb_buffer_t; func: hb_buffer_message_func_t; user_data: Pointer; destroy: hb_destroy_func_t); cdecl; external LIB_HARFBUZZ;
+procedure hb_ot_font_set_funcs(font: Phb_font_t); cdecl; external LIB_HARFBUZZ;
 {$ENDIF}
 
 implementation
@@ -1986,6 +1988,7 @@ begin
 //  @hb_buffer_deserialize_unicode := GMod.GetProcAddress('hb_buffer_deserialize_unicode');
   @hb_buffer_diff := GMod.GetProcAddress('hb_buffer_diff');
 //  @hb_buffer_set_message_func := GMod.GetProcAddress('hb_buffer_set_message_func');
+  @hb_ot_font_set_funcs := GMod.GetProcAddress('hb_ot_font_set_funcs');
 end;
 
 procedure FinalizeHarfBuzzModule;

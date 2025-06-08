@@ -1,7 +1,7 @@
 [Project]
 HeaderFileDirectory=harfbuzz
 IncludeSubdirs=0
-TargetPasFile=..\Neslib.HarfBuzz.pas
+TargetPasFile=Neslib.HarfBuzz.pas
 UseUnits=
 LibraryConstant=LIB_HARFBUZZ
 DebugDefine=
