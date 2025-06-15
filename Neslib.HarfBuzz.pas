@@ -1893,7 +1893,9 @@ var
   hb_ot_var_normalize_coords: procedure(face: Phb_face_t; coords_length: Cardinal; const design_coords: PSingle; normalized_coords: PInteger); cdecl = nil; 
 {$ELSE}
 const
-  {$IF Defined(IOS)}
+  {$IF Defined(HARFBUZZ_FROM_SKIA)}
+  LIB_HARFBUZZ = 'libsk4d.a';
+  {$ELSEIF Defined(IOS)}
   LIB_HARFBUZZ = 'libHarfBuzz_ios.a';
   {$ELSEIF Defined(MACOS64)}
   LIB_HARFBUZZ = 'libHarfBuzz_macos.a';
