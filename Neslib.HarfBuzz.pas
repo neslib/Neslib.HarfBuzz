@@ -18,6 +18,7 @@ const
   HB_VERSION_MINOR = 2;
   HB_VERSION_MICRO = 1;
   HB_VERSION_TEXT = '11.2.1';
+  HB_LANGUAGE_INVALID = nil;
   HB_OT_VAR_NO_AXIS_INDEX = $FFFFFFFF;
   HB_OT_MAX_TAGS_PER_SCRIPT = 3;
   HB_OT_MAX_TAGS_PER_LANGUAGE = 3;
@@ -25,6 +26,11 @@ const
   HB_OT_LAYOUT_NO_FEATURE_INDEX = $FFFF;
   HB_OT_LAYOUT_DEFAULT_LANGUAGE_INDEX = $FFFF;
   HB_OT_LAYOUT_NO_VARIATIONS_INDEX = $FFFFFFFF;
+  HB_OT_TAG_VAR_AXIS_ITALIC = $6974616C;
+  HB_OT_TAG_VAR_AXIS_OPTICAL_SIZE = $6F70737A;
+  HB_OT_TAG_VAR_AXIS_SLANT = $736C6E74;
+  HB_OT_TAG_VAR_AXIS_WEIGHT = $77676874;
+  HB_OT_TAG_VAR_AXIS_WIDTH = $77647468;
   HB_AAT_LAYOUT_NO_SELECTOR_INDEX = $FFFF;
 
 type
@@ -1398,7 +1404,7 @@ var
   hb_language_to_string: function(language: hb_language_t): PUTF8Char; cdecl = nil; 
   hb_language_get_default: function(): hb_language_t; cdecl = nil; 
   hb_language_matches: function(language: hb_language_t; specific: hb_language_t): hb_bool_t; cdecl = nil; 
-  hb_script_from_iso15924_tag: function(tag: hb_tag_t): hb_script_t; cdecl = nil; 
+  hb_script_from_iso15924_tag: function(tag: hb_tag_t): hb_script_t; cdecl = nil;
   hb_script_from_string: function(const str: PUTF8Char; len: Integer): hb_script_t; cdecl = nil; 
   hb_script_to_iso15924_tag: function(script: hb_script_t): hb_tag_t; cdecl = nil; 
   hb_script_get_horizontal_direction: function(script: hb_script_t): hb_direction_t; cdecl = nil; 
@@ -1903,7 +1909,6 @@ const
   LIB_HARFBUZZ = 'libHarfBuzz_android32.a';
   {$ELSEIF Defined(ANDROID64)}
   LIB_HARFBUZZ = 'libHarfBuzz_android64.a';
-  _PU = '';
   {$ELSE}
     {$MESSAGE Error 'Unsupported platform'}
   {$ENDIF}
