@@ -1778,9 +1778,9 @@ var
   hb_font_funcs_set_draw_glyph_func: procedure(ffuncs: Phb_font_funcs_t; func: hb_font_draw_glyph_func_t; user_data: Pointer; destroy: hb_destroy_func_t); cdecl = nil; 
   hb_font_funcs_set_paint_glyph_func: procedure(ffuncs: Phb_font_funcs_t; func: hb_font_paint_glyph_func_t; user_data: Pointer; destroy: hb_destroy_func_t); cdecl = nil; 
   hb_font_get_glyph_shape: procedure(font: Phb_font_t; glyph: hb_codepoint_t; dfuncs: Phb_draw_funcs_t; draw_data: Pointer); cdecl = nil; 
-  hb_shape: procedure(font: Phb_font_t; buffer: Phb_buffer_t; const features: Phb_feature_t; num_features: Cardinal); cdecl = nil; 
-  hb_shape_full: function(font: Phb_font_t; buffer: Phb_buffer_t; const features: Phb_feature_t; num_features: Cardinal; const shaper_list: PPUTF8Char): hb_bool_t; cdecl = nil; 
-  hb_shape_list_shapers: function(): PPUTF8Char; cdecl = nil; 
+  hb_shape: procedure(font: Phb_font_t; buffer: Phb_buffer_t; const features: Phb_feature_t; num_features: Cardinal); cdecl = nil;
+  hb_shape_full: function(font: Phb_font_t; buffer: Phb_buffer_t; const features: Phb_feature_t; num_features: Cardinal; const shaper_list: PPUTF8Char): hb_bool_t; cdecl = nil;
+  hb_shape_list_shapers: function(): PPUTF8Char; cdecl = nil;
   hb_shape_plan_create: function(face: Phb_face_t; const props: Phb_segment_properties_t; const user_features: Phb_feature_t; num_user_features: Cardinal; const shaper_list: PPUTF8Char): Phb_shape_plan_t; cdecl = nil; 
   hb_shape_plan_create_cached: function(face: Phb_face_t; const props: Phb_segment_properties_t; const user_features: Phb_feature_t; num_user_features: Cardinal; const shaper_list: PPUTF8Char): Phb_shape_plan_t; cdecl = nil; 
   hb_shape_plan_create2: function(face: Phb_face_t; const props: Phb_segment_properties_t; const user_features: Phb_feature_t; num_user_features: Cardinal; const coords: PInteger; num_coords: Cardinal; const shaper_list: PPUTF8Char): Phb_shape_plan_t; cdecl = nil; 
@@ -1885,13 +1885,13 @@ var
   hb_ot_metrics_get_x_variation: function(font: Phb_font_t; metrics_tag: hb_ot_metrics_tag_t): hb_position_t; cdecl = nil; 
   hb_ot_metrics_get_y_variation: function(font: Phb_font_t; metrics_tag: hb_ot_metrics_tag_t): hb_position_t; cdecl = nil; 
   hb_ot_shape_glyphs_closure: procedure(font: Phb_font_t; buffer: Phb_buffer_t; const features: Phb_feature_t; num_features: Cardinal; glyphs: Phb_set_t); cdecl = nil; 
-  hb_ot_shape_plan_collect_lookups: procedure(shape_plan: Phb_shape_plan_t; table_tag: hb_tag_t; lookup_indexes: Phb_set_t); cdecl = nil; 
-  hb_ot_shape_plan_get_feature_tags: function(shape_plan: Phb_shape_plan_t; start_offset: Cardinal; tag_count: PCardinal; tags: Phb_tag_t): Cardinal; cdecl = nil; 
-  hb_ot_var_has_data: function(face: Phb_face_t): hb_bool_t; cdecl = nil; 
-  hb_ot_var_get_axis_count: function(face: Phb_face_t): Cardinal; cdecl = nil; 
-  hb_ot_var_get_axis_infos: function(face: Phb_face_t; start_offset: Cardinal; axes_count: PCardinal; axes_array: Phb_ot_var_axis_info_t): Cardinal; cdecl = nil; 
-  hb_ot_var_find_axis_info: function(face: Phb_face_t; axis_tag: hb_tag_t; axis_info: Phb_ot_var_axis_info_t): hb_bool_t; cdecl = nil; 
-  hb_ot_var_get_named_instance_count: function(face: Phb_face_t): Cardinal; cdecl = nil; 
+  hb_ot_shape_plan_collect_lookups: procedure(shape_plan: Phb_shape_plan_t; table_tag: hb_tag_t; lookup_indexes: Phb_set_t); cdecl = nil;
+  hb_ot_shape_plan_get_feature_tags: function(shape_plan: Phb_shape_plan_t; start_offset: Cardinal; tag_count: PCardinal; tags: Phb_tag_t): Cardinal; cdecl = nil;
+  hb_ot_var_has_data: function(face: Phb_face_t): hb_bool_t; cdecl = nil;
+  hb_ot_var_get_axis_count: function(face: Phb_face_t): Cardinal; cdecl = nil;
+  hb_ot_var_get_axis_infos: function(face: Phb_face_t; start_offset: Cardinal; axes_count: PCardinal; axes_array: Phb_ot_var_axis_info_t): Cardinal; cdecl = nil;
+  hb_ot_var_find_axis_info: function(face: Phb_face_t; axis_tag: hb_tag_t; axis_info: Phb_ot_var_axis_info_t): hb_bool_t; cdecl = nil;
+  hb_ot_var_get_named_instance_count: function(face: Phb_face_t): Cardinal; cdecl = nil;
   hb_ot_var_named_instance_get_subfamily_name_id: function(face: Phb_face_t; instance_index: Cardinal): hb_ot_name_id_t; cdecl = nil; 
   hb_ot_var_named_instance_get_postscript_name_id: function(face: Phb_face_t; instance_index: Cardinal): hb_ot_name_id_t; cdecl = nil; 
   hb_ot_var_named_instance_get_design_coords: function(face: Phb_face_t; instance_index: Cardinal; coords_length: PCardinal; coords: PSingle): Cardinal; cdecl = nil; 
@@ -2295,7 +2295,14 @@ procedure hb_font_funcs_set_glyph_shape_func(ffuncs: Phb_font_funcs_t; func: hb_
 procedure hb_font_funcs_set_draw_glyph_func(ffuncs: Phb_font_funcs_t; func: hb_font_draw_glyph_func_t; user_data: Pointer; destroy: hb_destroy_func_t); cdecl; external LIB_HARFBUZZ;
 procedure hb_font_funcs_set_paint_glyph_func(ffuncs: Phb_font_funcs_t; func: hb_font_paint_glyph_func_t; user_data: Pointer; destroy: hb_destroy_func_t); cdecl; external LIB_HARFBUZZ;
 procedure hb_font_get_glyph_shape(font: Phb_font_t; glyph: hb_codepoint_t; dfuncs: Phb_draw_funcs_t; draw_data: Pointer); cdecl; external LIB_HARFBUZZ;
-procedure hb_shape(font: Phb_font_t; buffer: Phb_buffer_t; const features: Phb_feature_t; num_features: Cardinal); cdecl; external LIB_HARFBUZZ;
+
+procedure hb_shape(font: Phb_font_t; buffer: Phb_buffer_t; const features: Phb_feature_t; num_features: Cardinal);  cdecl; external LIB_HARFBUZZ
+  {$IF Defined(MACOS)}
+  dependency 'c++'
+  {$ELSEIF Defined(ANDROID)}
+  dependency 'c++_static' dependency 'c++abi'
+  {$ENDIF};
+
 function hb_shape_full(font: Phb_font_t; buffer: Phb_buffer_t; const features: Phb_feature_t; num_features: Cardinal; const shaper_list: PPUTF8Char): hb_bool_t; cdecl; external LIB_HARFBUZZ;
 function hb_shape_list_shapers(): PPUTF8Char; cdecl; external LIB_HARFBUZZ;
 function hb_shape_plan_create(face: Phb_face_t; const props: Phb_segment_properties_t; const user_features: Phb_feature_t; num_user_features: Cardinal; const shaper_list: PPUTF8Char): Phb_shape_plan_t; cdecl; external LIB_HARFBUZZ;
